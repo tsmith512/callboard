@@ -6,8 +6,8 @@ Foreach `call` in `calls`, calculate the next upcoming `warning` time (where `wa
 
 | `event`                                 | `warning value`              | Countdown            |
 | --------------------------------------- | ---------------------------- | -------------------- |
-| **Openers to Places (`event`)**         | 5 minutes (`warning value`)  | _HH:MM:SS to `time`_ |
-| **Actors and Band to Places (`event`)** | 10 minutes (`warning value`) | _HH:MM:SS to `time`_ |
+| **Openers to Places**                   | 5 minutes                    | _HH:MM:SS to `time`_ |
+| **Actors and Band to Places**           | 10 minutes                   | _HH:MM:SS to `time`_ |
 
 If possible, on a `warning` minute, vibrate the phone.
 
@@ -17,6 +17,6 @@ Foreach `call` in `calls`:
 
 | `event`                                 | Countdown            |
 | --------------------------------------- | -------------------- |
-| **Openers to Places (`event`)**         | _HH:MM:SS to `time`_ |
-| **Actors and Band to Places (`event`)** | _HH:MM:SS to `time`_ |
-| **Top of Show, Band Go (`event`)**      | _HH:MM:SS to `time`_ |
+| **Openers to Places**                   | _HH:MM:SS to `time`_ |
+| **Actors and Band to Places**           | _HH:MM:SS to `time`_ |
+| **Top of Show, Band Go**                | _HH:MM:SS to `time`_ |
