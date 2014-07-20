@@ -1,8 +1,9 @@
 ;(function($){
   // Setup containers and templates
   var warnings = [],
-      warningMessage = 'COUNT &mdash; MINUTES PREPOSITION EVENT (warn at TIME)',
-      callMessage = 'TIME (COUNT) &mdash; EVENT',
+      warningMessage = 'COUNT &mdash; MINUTES minutes to EVENT (warn at TIME)',
+      callMessage = 'COUNT &mdash; EVENT (call at TIME)',
+      scheduleMessage = 'TIME (COUNT) &mdash; EVENT',
       eventContainer = '<li class="event-unprocessed"></li>',
       countdownContainer = '<span class="countdown"></span>';
 
@@ -24,10 +25,11 @@
   warnings.sort(function(a,b) { return (a.time) - (b.time) } );
 
   $.each(warnings, function(index, warning){
-    var count = countdown(null, warning.mtime.toDate());
-    var content = (warning.minute > 0) ?
-          warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', warning.minute).replace('PREPOSITION', 'minutes to').replace('EVENT', warning.event).replace('TIME', warning.mtime.format('hh:mma')) :
-          warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', '').replace('PREPOSITION', 'Go').replace('EVENT', warning.event).replace('TIME', warning.mtime.format('hh:mma'));
+    var count = countdown(null, warning.mtime.toDate()),
+        time = warning.mtime.format('hh:mma')
+        content = (warning.minute > 0) ?
+          warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', warning.minute).replace('EVENT', warning.event).replace('TIME', time) :
+          callMessage.replace('COUNT', countdownContainer).replace('EVENT', warning.event).replace('TIME', time);
 
     $(eventContainer)
       .attr('id', 'warning-' + index)
@@ -43,7 +45,7 @@
       .attr('id', 'call-' + index)
       .data('mtime', call.mtime.toDate())
       .data('type', 'call')
-      .html(callMessage.replace('TIME', call.mtime.format('hh:mma')).replace('COUNT', countdownContainer).replace('EVENT', call.event))
+      .html(scheduleMessage.replace('TIME', call.mtime.format('hh:mma')).replace('COUNT', countdownContainer).replace('EVENT', call.event))
       .appendTo('ul#B');
   });
 
