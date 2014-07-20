@@ -1,6 +1,10 @@
-var warnings = [];
-
 ;(function($){
+  // Setup containers and templates
+  var warnings = [],
+      warningMessage = 'COUNT &mdash; MINUTES minutes to EVENT (warn at TIME)',
+      callMessage = 'TIME (COUNT) &mdash; EVENT',
+      eventContainer = '<li class="event"></li>',
+      countdownContainer = '<span class="countdown"></span>';
 
   $.each(calls, function(index, call){
     call.mtime = moment(call.time, 'hh:mma');
@@ -21,21 +25,31 @@ var warnings = [];
 
   $.each(warnings, function(index, warning){
     var count = countdown(null, warning.mtime.toDate());
-    $('<li/>').attr('id', 'warning-' + index).data('mtime', warning.mtime.toDate()).html([warning.mtime.format('hh:mma'), '-', warning.minute, 'minutes to', calls[warning.forEvent].event, '<span class="countdown"></span>'].join(' ')).appendTo('ul#A');
+    $(eventContainer)
+      .attr('id', 'warning-' + index)
+      .data('mtime', warning.mtime.toDate())
+      .html(warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', warning.minute).replace('EVENT', calls[warning.forEvent].event).replace('TIME', warning.mtime.format('hh:mma')))
+      .appendTo('ul#A');
   });
 
   $.each(calls, function(index, call){
     var count = countdown(null, call.mtime.toDate());
-    $('<li/>').attr('id', 'call-' + index).data('mtime', call.mtime.toDate()).html([call.event, '<span class="countdown"></span>'].join(' ')).appendTo('ul#B');
+    $(eventContainer)
+      .attr('id', 'call-' + index)
+      .data('mtime', call.mtime.toDate())
+      .html(callMessage.replace('TIME', call.mtime.format('hh:mma')).replace('COUNT', countdownContainer).replace('EVENT', call.event))
+      .appendTo('ul#B');
   });
 
-  var updateCalls = function() {
+  var updateEvents = function() {
     $('li').each(function(){
-      var count = countdown(null, $(this).data('mtime'));
-      var remaining = [count.hours, count.minutes, count.seconds].join(":")
+      var count = countdown(null, $(this).data('mtime')),
+          minutesRemaining = countdown(null, $(this).data('mtime'), countdown.MINUTES),
+          remaining = (count.value > 0) ? [count.hours, count.minutes, count.seconds].join(":") : (minutesRemaining.minutes + ' minutes ago');
+      if (count.value < 0) { $(this).addClass('event-past'); }
       $('.countdown', this).text(remaining);
     });
   }
 
-  var refresh = window.setInterval(updateCalls, 500);
+  var refresh = window.setInterval(updateEvents, 500);
 })(jQuery);
