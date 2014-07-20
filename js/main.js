@@ -10,12 +10,12 @@
     call.mtime = moment(call.time, 'hh:mma');
     call.time = call.mtime.toDate();
 
-    $.each(call.warnings, function(warningindex, minutes){
+    $.each(call.warnings, function(index, minutes){
       warnings.push({
         mtime: moment(call.mtime).subtract('minutes', minutes),
         time: moment(call.mtime).subtract('minutes', minutes).toDate(),
         minute: minutes,
-        forEvent: index,
+        event: call.event,
       });
     })
   });
@@ -28,7 +28,7 @@
     $(eventContainer)
       .attr('id', 'warning-' + index)
       .data('mtime', warning.mtime.toDate())
-      .html(warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', warning.minute).replace('EVENT', calls[warning.forEvent].event).replace('TIME', warning.mtime.format('hh:mma')))
+      .html(warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', warning.minute).replace('EVENT', warning.event).replace('TIME', warning.mtime.format('hh:mma')))
       .appendTo('ul#A');
   });
 
