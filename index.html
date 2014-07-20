@@ -4,16 +4,18 @@
   <meta charset="UTF-8" />
   <title>Calls</title>
   <style type="text/css">
+    .event-unprocessed { display: none; }
     .event-past { color: #CCC; }
     .event-call { color: #090; }
-    .event-upcoming { color: #03C; }
+    .event-upcoming { color: #009; }
+    .event-soon { color: #03C; }
     .event-recent { color: #C00; }
     .event-future { color: #999; }
   </style>
 </head>
 <body>
-  <ul id="A"></ul>
-  <ul id="B"></ul>
+  <ul id="calls"></ul>
+  <ul id="schedule"></ul>
   <script src="js/vendor/jquery-1.11.1.min.js"></script>
   <script src="js/vendor/moment.min.js"></script>
   <script src="js/vendor/countdown.min.js"></script>
