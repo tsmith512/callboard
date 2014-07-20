@@ -3,7 +3,7 @@
   var warnings = [],
       warningMessage = 'COUNT &mdash; MINUTES minutes to EVENT (warn at TIME)',
       callMessage = 'TIME (COUNT) &mdash; EVENT',
-      eventContainer = '<li class="event"></li>',
+      eventContainer = '<li class="event-unprocessed"></li>',
       countdownContainer = '<span class="countdown"></span>';
 
   $.each(calls, function(index, call){
@@ -46,7 +46,16 @@
       var count = countdown(null, $(this).data('mtime')),
           minutesRemaining = countdown(null, $(this).data('mtime'), countdown.MINUTES),
           remaining = (count.value > 0) ? [count.hours, count.minutes, count.seconds].join(":") : (minutesRemaining.minutes + ' minutes ago');
-      if (count.value < 0) { $(this).addClass('event-past'); }
+
+      // Add classes to the list item based on how long
+      if (count.value > 0 && minutesRemaining.minutes > 15) { $(this).removeClass().addClass('event-future'); }
+      if (count.value > 0 && minutesRemaining.minutes > 5 && minutesRemaining.minutes <= 15) { $(this).removeClass().addClass('event-upcoming'); }
+      if (count.value > 0 && minutesRemaining.minutes > 2 && minutesRemaining.minutes <= 5) { $(this).removeClass().addClass('event-soon'); }
+      if (count.value > 0 && minutesRemaining.minutes <= 2) { $(this).removeClass().addClass('event-call'); }
+      else if (count.value < 0 && minutesRemaining.minutes <= 5) { $(this).removeClass().addClass('event-recent'); }
+      else if (count.value < 0 && minutesRemaining.minutes > 5) { $(this).removeClass().addClass('event-past'); }
+
+      // Update the readout of the countdown:
       $('.countdown', this).text(remaining);
     });
   }
