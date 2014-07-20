@@ -21,26 +21,19 @@ var warnings = [];
 
   $.each(warnings, function(index, warning){
     var count = countdown(null, warning.mtime.toDate());
-    var remaining = '(' + [count.hours, count.minutes, count.seconds].join(":") + ')';
-    $('<li/>').attr('id', 'warning-' + index).text([warning.mtime.format('hh:mma'), '-', warning.minute, 'minutes to', calls[warning.forEvent].event, remaining].join(' ')).appendTo('ul#A');
+    $('<li/>').attr('id', 'warning-' + index).data('mtime', warning.mtime.toDate()).html([warning.mtime.format('hh:mma'), '-', warning.minute, 'minutes to', calls[warning.forEvent].event, '<span class="countdown"></span>'].join(' ')).appendTo('ul#A');
   });
 
   $.each(calls, function(index, call){
     var count = countdown(null, call.mtime.toDate());
-    var remaining = [count.hours, count.minutes, count.seconds].join(":")
-    $('<li/>').attr('id', 'call-' + index).text([call.event, remaining].join(' ')).appendTo('ul#B');
+    $('<li/>').attr('id', 'call-' + index).data('mtime', call.mtime.toDate()).html([call.event, '<span class="countdown"></span>'].join(' ')).appendTo('ul#B');
   });
 
   var updateCalls = function() {
-    $.each(calls, function(index, call){
-      var count = countdown(null, call.mtime.toDate());
+    $('li').each(function(){
+      var count = countdown(null, $(this).data('mtime'));
       var remaining = [count.hours, count.minutes, count.seconds].join(":")
-      $('li#call-' + index).text([call.event, remaining].join(' '));
-    });
-    $.each(warnings, function(index, warning){
-      var count = countdown(null, warning.mtime.toDate());
-      var remaining = '(' + [count.hours, count.minutes, count.seconds].join(":") + ')';
-      $('li#warning-' + index).text([warning.mtime.format('hh:mma'), '-', warning.minute, 'minutes to', calls[warning.forEvent].event, remaining].join(' '));
+      $('.countdown', this).text(remaining);
     });
   }
 
