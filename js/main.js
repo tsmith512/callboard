@@ -1,7 +1,7 @@
 ;(function($){
   // Setup containers and templates
   var warnings = [],
-      warningMessage = 'COUNT &mdash; MINUTES minutes to EVENT (warn at TIME)',
+      warningMessage = 'COUNT &mdash; MINUTES PREPOSITION EVENT (warn at TIME)',
       callMessage = 'TIME (COUNT) &mdash; EVENT',
       eventContainer = '<li class="event-unprocessed"></li>',
       countdownContainer = '<span class="countdown"></span>';
@@ -25,10 +25,15 @@
 
   $.each(warnings, function(index, warning){
     var count = countdown(null, warning.mtime.toDate());
+    var content = (warning.minute > 0) ?
+          warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', warning.minute).replace('PREPOSITION', 'minutes to').replace('EVENT', warning.event).replace('TIME', warning.mtime.format('hh:mma')) :
+          warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', '').replace('PREPOSITION', 'Go').replace('EVENT', warning.event).replace('TIME', warning.mtime.format('hh:mma'));
+
     $(eventContainer)
       .attr('id', 'warning-' + index)
       .data('mtime', warning.mtime.toDate())
-      .html(warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', warning.minute).replace('EVENT', warning.event).replace('TIME', warning.mtime.format('hh:mma')))
+      .data('type', 'warning')
+      .html(content)
       .appendTo('ul#A');
   });
 
@@ -37,6 +42,7 @@
     $(eventContainer)
       .attr('id', 'call-' + index)
       .data('mtime', call.mtime.toDate())
+      .data('type', 'call')
       .html(callMessage.replace('TIME', call.mtime.format('hh:mma')).replace('COUNT', countdownContainer).replace('EVENT', call.event))
       .appendTo('ul#B');
   });
@@ -53,7 +59,10 @@
       if (count.value > 0 && minutesRemaining.minutes > 2 && minutesRemaining.minutes <= 5) { $(this).removeClass().addClass('event-soon'); }
       if (count.value > 0 && minutesRemaining.minutes <= 2) { $(this).removeClass().addClass('event-call'); }
       else if (count.value < 0 && minutesRemaining.minutes <= 5) { $(this).removeClass().addClass('event-recent'); }
-      else if (count.value < 0 && minutesRemaining.minutes > 5) { $(this).removeClass().addClass('event-past'); }
+      else if (count.value < 0 && minutesRemaining.minutes > 5) {
+        $(this).removeClass().addClass('event-past');
+        if ( $(this).data('type') == 'warning' ) { $(this).remove(); }
+      }
 
       // Update the readout of the countdown:
       $('.countdown', this).text(remaining);
