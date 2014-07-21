@@ -77,8 +77,8 @@
         // Future calls:
         if      (minutesRemaining.minutes > 15)            { newClass = 'event-future';   }
         else if (minutesRemaining.minutes.between(5, 15))  { newClass = 'event-upcoming'; }
-        else if (minutesRemaining.minutes.between(2, 5))   { newClass = 'event-soon';     }
-        else if (minutesRemaining.minutes.between(-1, 2))  { newClass = 'event-call';     }
+        else if (minutesRemaining.minutes.between(1, 5))   { newClass = 'event-soon';     }
+        else if (minutesRemaining.minutes.between(-1, 1))  { newClass = 'event-call';     }
       } else {
         // Now / Past calls:
         if      (minutesRemaining.minutes.between(-1, 1))  { newClass = 'event-call';     }
@@ -101,17 +101,10 @@
   }
 
 
-  $('#show-calls').click(function(){
+  $('nav a').click(function(){
+    $('nav a').removeClass('active');
     $(this).addClass('active');
-    $('#show-schedule').removeClass('active');
-    $('#schedule').hide();
-    $('#calls').show();
-  });
-  $('#show-schedule').click(function(){
-    $(this).addClass('active');
-    $('#show-calls').removeClass('active');
-    $('#calls').hide();
-    $('#schedule').show();
+    $('body').removeClass().addClass( 'show-' + $(this).data('show') );
   });
 
   $(document).ready(function(){

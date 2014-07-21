@@ -487,17 +487,13 @@ nav a {
   text-align: center;
   border-top: 1px solid #222;
   border-bottom: 1px solid #000;
+  border-right: 1px solid #111;
+  border-left: 1px solid #333;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #999;
   background-color: #111;
-}
-nav a:first-child {
-  border-right: 1px solid #111;
-}
-nav a:last-child {
-  border-left: 1px solid #333;
 }
 nav a.active {
   color: #EEE;
@@ -505,11 +501,7 @@ nav a.active {
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
   border-top-color: #888;
   border-bottom-color: #666;
-}
-nav a.active:first-child {
   border-right-color: #666;
-}
-nav a.active:last-child {
   border-left-color: #888;
 }
 
@@ -518,11 +510,17 @@ nav a.active:last-child {
   margin-bottom: 1em;
   border-bottom: 1px solid #333;
 }
+.show-announce .segment#calls, .show-calls .segment#calls, .show-schedule .segment#schedule {
+  display: block;
+}
 
 article {
   border-top: 1px solid #333;
   border-bottom: 1px solid #111;
   padding: 0.5em 1em;
+}
+.show-announce article {
+  display: none;
 }
 article:first-child {
   border-top-width: 0;
@@ -556,6 +554,13 @@ article.event-call {
   border-top-color: #070;
   background-color: #060;
   border-bottom-color: #050;
+}
+.show-announce article.event-call {
+  font-size: 1.5em;
+  display: block;
+}
+.show-announce article.event-call .content {
+  font-size: 3em;
 }
 article.event-soon {
   border-top-color: #444;
