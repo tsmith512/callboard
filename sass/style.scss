@@ -1,0 +1,144 @@
+////////////////////////
+// Style File
+//
+// This file gets turned into style.css. This file should really
+//  hold nothing except for imports of your base, layout, and design
+//  partials.
+////////////////////////
+
+////////////////////////
+// Configuration, no CSS output.
+//   variables
+//   mixins
+//   functions
+//   compass extensions
+////////////////////////
+@import 'config/config';
+
+////////////////////////
+// Import global elements
+////////////////////////
+@import 'global/_normalize.css.scss';
+@import 'global/type';
+
+body {
+  background: #222;
+  color: #CCC;
+}
+
+nav {
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #333;
+
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+
+  a {
+    display: block;
+    width: 50%;
+    -webkit-flex: 1 0;
+    -ms-flex: 1 0;
+    flex: 1 0;
+
+    padding: 1em;
+    text-align: center;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #000;
+    &:first-child { border-right: 1px solid #111; }
+    &:last-child { border-left: 1px solid #333; }
+
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #999;
+    background-color: #111;
+
+    &.active {
+      color: #EEE;
+      background-color: #777;
+      @include text-shadow(1px 1px 0 rgba(0,0,0,0.75));
+      border-top-color: #888;
+      border-bottom-color: #666;
+      &:first-child { border-right-color: #666; }
+      &:last-child { border-left-color: #888; }
+    }
+
+  }
+}
+
+.segment {
+  display: none;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #333;
+}
+
+article {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #111;
+  padding: 0.5em 1em;
+
+  &:first-child {
+    border-top-width: 0;
+  }
+
+  header, footer {
+    font-family: $font-monospace;
+    font-size: 0.875em;
+    text-transform: uppercase;
+    @include text-shadow(1px 1px 0 rgba(0,0,0,0.75));
+  }
+
+  .content {
+    font-size: 1.75em;
+    text-align: center;
+    @include text-shadow(1px 1px 0 rgba(0,0,0,0.5));
+  }
+
+  footer {
+    text-align: right;
+  }
+
+  // Variants:
+  &.event-unprocessed {
+    display: none;
+  }
+
+  &.event-past {
+    color: #555;
+  }
+
+  &.event-recent {
+    border-top-color: #700;
+    background-color: #600;
+    border-bottom-color: #500;
+  }
+
+  &.event-call {
+    border-top-color: #070;
+    background-color: #060;
+    border-bottom-color: #050;
+  }
+
+  &.event-soon {
+    border-top-color: #444;
+    background-color: #333;
+    border-bottom-color: #222;
+  }
+
+  &.event-upcoming {
+    color: #EEE;
+  }
+
+  &.event-future {
+    color: #888;
+  }
+
+}

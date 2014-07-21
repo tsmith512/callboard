@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <title>Calls</title>
-  <style type="text/css">
-    .event-unprocessed { display: none; }
-    .event-past { color: #CCC; }
-    .event-call { color: #090; }
-    .event-upcoming { color: #009; }
-    .event-soon { color: #03C; }
-    .event-recent { color: #C00; }
-    .event-future { color: #999; }
-  </style>
+  <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
 </head>
 <body>
-  <ul id="calls"></ul>
-  <ul id="schedule"></ul>
+  <nav>
+    <a href="#" id="show-calls">Calls</a>
+    <a href="#" id="show-schedule">Schedule</a>
+  </nav>
+  <div class="segment" id="calls"></div>
+  <div class="segment" id="schedule"></div>
   <script src="js/vendor/jquery-1.11.1.min.js"></script>
   <script src="js/vendor/moment.min.js"></script>
   <script src="js/vendor/countdown.min.js"></script>

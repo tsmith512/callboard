@@ -1,10 +1,10 @@
 ;(function($){
   // Setup containers and templates
   var warnings = [],
-      warningMessage = 'COUNT &mdash; MINUTES minutes to EVENT (warn at TIME)',
-      callMessage = 'COUNT &mdash; EVENT (call at TIME)',
-      scheduleMessage = 'TIME (COUNT) &mdash; EVENT',
-      eventContainer = '<li class="event-unprocessed"></li>',
+      warningMessage = '<header>COUNT</header> <div class="content">MINUTES minutes to EVENT</div> <footer>Warn at TIME</footer>',
+      callMessage = '<header>COUNT</header> <div class="content">EVENT</div> <footer>Call at TIME</footer>',
+      scheduleMessage = '<header>TIME (COUNT)</header> <div class="content">EVENT</div>',
+      eventContainer = '<article class="event-unprocessed"></article>',
       countdownContainer = '<span class="countdown"></span>';
 
   // Run through the call list to build out the necessary warning events:
@@ -63,7 +63,7 @@
   var updateEvents = function() {
     var now = false;
 
-    $('li').each(function(){
+    $('article').each(function(){
       var count = countdown(null, $(this).data('mtime')),
           minutesRemaining = countdown(null, $(this).data('mtime'), countdown.MINUTES),
           remaining = (count.value > 0) ? [count.hours, count.minutes, count.seconds].join(":") : (minutesRemaining.minutes + ' minutes ago'),
@@ -100,5 +100,22 @@
     else     { $('body').removeClass('call-now'); }
   }
 
-  var refresh = window.setInterval(updateEvents, 1000);
+
+  $('#show-calls').click(function(){
+    $(this).addClass('active');
+    $('#show-schedule').removeClass('active');
+    $('#schedule').hide();
+    $('#calls').show();
+  });
+  $('#show-schedule').click(function(){
+    $(this).addClass('active');
+    $('#show-calls').removeClass('active');
+    $('#calls').hide();
+    $('#schedule').show();
+  });
+
+  $(document).ready(function(){
+    var refresh = window.setInterval(updateEvents, 1000);
+    $('#show-calls').click();
+  });
 })(jQuery);
