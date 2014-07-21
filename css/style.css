@@ -518,6 +518,8 @@ article {
   border-top: 1px solid #333;
   border-bottom: 1px solid #111;
   padding: 0.5em 1em;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .show-announce article {
   display: none;
