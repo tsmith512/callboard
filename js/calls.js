@@ -6,7 +6,7 @@ var calls = [
   },
   {
     event: 'Fight and Fall Rehearsals',
-    time: '7:30pm',
+    time: '7:15pm',
     warnings: [10, 0]
   },
   {
@@ -25,8 +25,13 @@ var calls = [
     warnings: [60, 30, 15, 10, 5, 0]
   },
   {
-    event: 'Top of Show, Band Go for Overture',
-    time: '8:30pm',
+    event: 'Call the Hill',
+    time: '8:28pm',
     warnings: [0]
   },
+  {
+    event: 'Standby Sound; Go Band',
+    time: '8:30pm',
+    warnings: [0]
+  }
 ];
