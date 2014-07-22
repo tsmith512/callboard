@@ -30,7 +30,7 @@
   // For each warning event, build out the message and put it in the call list
   $.each(warnings, function(index, warning){
     var count = countdown(null, warning.mtime.toDate()),
-        time = warning.mtime.format('hh:mma')
+        time = warning.mtime.format('h:mma')
         content = (warning.minute > 0) ?
           warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', warning.minute).replace('EVENT', warning.event).replace('TIME', time) :
           callMessage.replace('COUNT', countdownContainer).replace('EVENT', warning.event).replace('TIME', time);
@@ -59,6 +59,9 @@
     // A function to see if a time is in the future (is it positive?)
     Number.prototype.future =  function(){ return (this > 0); }
 
+    // We output countdown components manually, let's pad those numbers to two-digits
+    Number.prototype.pad =  function(){ return (this < 10) ? '0' + this : this; }
+
   // A function to update each countdown label and add/remove classes
   var updateEvents = function() {
     var now = false;
@@ -66,7 +69,7 @@
     $('article').each(function(){
       var count = countdown(null, $(this).data('mtime')),
           minutesRemaining = countdown(null, $(this).data('mtime'), countdown.MINUTES),
-          remaining = (count.value > 0) ? [count.hours, count.minutes, count.seconds].join(":") : (minutesRemaining.minutes + ' minutes ago'),
+          remaining = (count.value > 0) ? [count.hours.pad(), count.minutes.pad(), count.seconds.pad()].join(":") : (minutesRemaining.minutes + ' minutes ago'),
           newClass = '';
 
       // Do we have a call at this exact moment?

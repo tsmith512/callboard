@@ -86,6 +86,8 @@ article {
   border-bottom: 1px solid #111;
   padding: 0.5em 1em;
 
+  @include transition(color .2s ease-out, background .2s ease-out, border .2s ease-out);
+
   .show-announce & { display: none; }
 
   &:first-child {
@@ -130,12 +132,13 @@ article {
     border-bottom-color: #050;
     .show-announce & {
       font-size: 1.5em;
-      .content { font-size: 3em; }
+      .content { font-size: 2.25em; }
       display: block;
     }
   }
 
   &.event-soon {
+    color: #EEE;
     border-top-color: #444;
     background-color: #333;
     border-bottom-color: #222;
