@@ -518,8 +518,8 @@ article {
   border-top: 1px solid #333;
   border-bottom: 1px solid #111;
   padding: 0.5em 1em;
-  -webkit-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
+  -webkit-transition: color 0.2s ease-out, background 0.2s ease-out, border 0.2s ease-out;
+  transition: color 0.2s ease-out, background 0.2s ease-out, border 0.2s ease-out;
 }
 .show-announce article {
   display: none;
@@ -562,9 +562,10 @@ article.event-call {
   display: block;
 }
 .show-announce article.event-call .content {
-  font-size: 3em;
+  font-size: 2.25em;
 }
 article.event-soon {
+  color: #EEE;
   border-top-color: #444;
   background-color: #333;
   border-bottom-color: #222;
