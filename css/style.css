@@ -527,6 +527,11 @@ article {
   padding: 0.5em 1em;
   -webkit-transition: color 0.2s ease-out, background 0.2s ease-out, border 0.2s ease-out;
   transition: color 0.2s ease-out, background 0.2s ease-out, border 0.2s ease-out;
+  color: #888;
+}
+article .content {
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
 }
 .show-announce article {
   display: none;
@@ -564,14 +569,18 @@ article.event-unprocessed {
 article.event-past {
   color: #555;
 }
-article.event-recent {
+article.event-recent header, article.event-recent footer, article.event-call header, article.event-call footer, article.event-soon header, article.event-soon footer {
+  color: #CCC;
+}
+article.event-recent .content, article.event-call .content, article.event-soon .content {
   color: #FFF;
+}
+article.event-recent {
   border-top-color: #700;
   background-color: #600;
   border-bottom-color: #500;
 }
 article.event-call {
-  color: #FFF;
   border-top-color: #070;
   background-color: #060;
   border-bottom-color: #050;
@@ -584,14 +593,10 @@ article.event-call {
   font-size: 2.25em;
 }
 article.event-soon {
-  color: #EEE;
   border-top-color: #049;
   background-color: #036;
   border-bottom-color: #013;
 }
-article.event-upcoming {
-  color: #EEE;
-}
-article.event-future {
-  color: #888;
+article.event-upcoming .content {
+  color: #CCC;
 }

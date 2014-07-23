@@ -93,6 +93,7 @@ article {
   padding: 0.5em 1em;
 
   @include transition(color .2s ease-out, background .2s ease-out, border .2s ease-out);
+  .content { @include transition(color .2s ease-out); }
 
   .show-announce & { display: none; }
 
@@ -106,6 +107,8 @@ article {
     text-transform: uppercase;
     @include text-shadow(1px 1px 0 rgba(0,0,0,0.75));
   }
+
+  color: #888;
 
   .content {
     font-size: 1.125em;
@@ -133,15 +136,20 @@ article {
     color: #555;
   }
 
+  &.event-recent,
+  &.event-call,
+  &.event-soon {
+    header, footer { color: #CCC; }
+    .content { color: #FFF; }
+  }
+
   &.event-recent {
-    color: #FFF;
     border-top-color: #700;
     background-color: #600;
     border-bottom-color: #500;
   }
 
   &.event-call {
-    color: #FFF;
     border-top-color: #070;
     background-color: #060;
     border-bottom-color: #050;
@@ -153,18 +161,16 @@ article {
   }
 
   &.event-soon {
-    color: #EEE;
     border-top-color: #049;
     background-color: #036;
     border-bottom-color: #013;
   }
 
   &.event-upcoming {
-    color: #EEE;
+    .content { color: #CCC; }
   }
 
   &.event-future {
-    color: #888;
   }
 
 }
