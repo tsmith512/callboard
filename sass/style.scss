@@ -42,12 +42,18 @@ nav {
 
   a {
     display: block;
-    width: 50%;
+    width: 33%;
     -webkit-flex: 1 0;
     -ms-flex: 1 0;
     flex: 1 0;
 
-    padding: 1em;
+    font-size: 0.625em;
+    @include respond-to('larger buttons') {
+      padding: 1em;
+      font-size: 0.875em;
+    }
+
+    padding: 0.5em 0.25em;
     text-align: center;
     border-top: 1px solid #222;
     border-bottom: 1px solid #000;
@@ -102,7 +108,14 @@ article {
   }
 
   .content {
-    font-size: 1.75em;
+    font-size: 1.125em;
+    @include respond-to('medium warnings') {
+      font-size: 1.375em;
+    }
+    @include respond-to('large warnings') {
+      font-size: 1.625em;
+    }
+
     text-align: center;
     @include text-shadow(1px 1px 0 rgba(0,0,0,0.5));
   }
@@ -121,12 +134,14 @@ article {
   }
 
   &.event-recent {
+    color: #FFF;
     border-top-color: #700;
     background-color: #600;
     border-bottom-color: #500;
   }
 
   &.event-call {
+    color: #FFF;
     border-top-color: #070;
     background-color: #060;
     border-bottom-color: #050;
@@ -139,9 +154,9 @@ article {
 
   &.event-soon {
     color: #EEE;
-    border-top-color: #444;
-    background-color: #333;
-    border-bottom-color: #222;
+    border-top-color: #049;
+    background-color: #036;
+    border-bottom-color: #013;
   }
 
   &.event-upcoming {
