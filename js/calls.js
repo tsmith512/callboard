@@ -6,8 +6,8 @@ var calls = [
   },
   {
     event: 'Fight and Fall Rehearsals',
-    time: '7:15pm',
-    warnings: [10, 0]
+    time: '7:10pm',
+    warnings: [5, 0]
   },
   {
     event: 'Sound Check',
@@ -20,7 +20,7 @@ var calls = [
     warnings: [15, 5, 0]
   },
   {
-    event: 'Actors and Band to Places',
+    event: 'Places',
     time: '8:28pm',
     warnings: [60, 30, 15, 10, 5, 0]
   },
