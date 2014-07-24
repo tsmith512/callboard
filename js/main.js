@@ -1,6 +1,7 @@
 ;(function($){
   // Setup containers and templates
   var warnings = [],
+      warningsConsolidated = [],
       warningMessage = '<header>COUNT</header> <div class="content">MINUTES minutes to EVENT</div> <footer>Warn at TIME</footer>',
       callMessage = '<header>COUNT</header> <div class="content">EVENT</div> <footer>Call at TIME</footer>',
       scheduleMessage = '<header>TIME (COUNT)</header> <div class="content">EVENT</div>',
@@ -17,8 +18,10 @@
       warnings.push({
         mtime: moment(call.mtime).subtract('minutes', minutes),
         time: moment(call.mtime).subtract('minutes', minutes).toDate(),
-        minute: minutes,
-        event: call.event,
+        content: [{
+          minute: minutes,
+          event: call.event,
+        }],
       });
     })
   });
@@ -27,12 +30,33 @@
   calls.sort(function(a,b) { return (a.time) - (b.time) } );
   warnings.sort(function(a,b) { return (a.time) - (b.time) } );
 
-  // For each warning event, build out the message and put it in the call list
   $.each(warnings, function(index, warning){
+    if (index === 0) {
+      warningsConsolidated.push(warning);
+      return;
+    }
+
+    if (warning.time.valueOf() == warningsConsolidated[warningsConsolidated.length - 1].time.valueOf()) {
+      warningsConsolidated[warningsConsolidated.length - 1].content = warningsConsolidated[warningsConsolidated.length - 1].content.concat(warning.content);
+    } else {
+      warningsConsolidated.push(warning);
+    }
+  });
+
+  // For each warning event, build out the message and put it in the call list
+  $.each(warningsConsolidated, function(index, warning){
+    var messages = [];
+
+    $.each(warning.content, function(index, warning){
+      // WORK IN PROGRESS: Each object in this payload has a minute value and an
+      // event text. This could be a really useful upgrade, but I got tired
+      // and I'm gonna get BBQ for dinner shortly.
+    });
+
     var count = countdown(null, warning.mtime.toDate()),
         time = warning.mtime.format('h:mma')
         content = (warning.minute > 0) ?
-          warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', warning.minute).replace('EVENT', warning.event).replace('TIME', time) :
+          warningMessage.replace('COUNT', countdownContainer).replace('MINUTES', warning.minute).replace('EVENT', warning.event.join(' - ')).replace('TIME', time) :
           callMessage.replace('COUNT', countdownContainer).replace('EVENT', warning.event).replace('TIME', time);
 
     $(eventContainer)
