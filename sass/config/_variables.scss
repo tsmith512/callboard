@@ -106,4 +106,6 @@ $breakpoint-no-query-fallbacks: true  !default;
 $breakpoint-to-ems:             false;
 
 // We might want to remove this in favor of our own mixin later.
-$breakpoints: add-breakpoint('ie 8', 150px);
+$breakpoints: add-breakpoint('larger buttons', 420px);
+$breakpoints: add-breakpoint('medium warnings', 380px);
+$breakpoints: add-breakpoint('large warnings', 620px);

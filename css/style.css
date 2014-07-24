@@ -479,11 +479,12 @@ nav {
 }
 nav a {
   display: block;
-  width: 50%;
+  width: 33%;
   -webkit-flex: 1 0;
   -ms-flex: 1 0;
   flex: 1 0;
-  padding: 1em;
+  font-size: 0.625em;
+  padding: 0.5em 0.25em;
   text-align: center;
   border-top: 1px solid #222;
   border-bottom: 1px solid #000;
@@ -494,6 +495,12 @@ nav a {
   letter-spacing: 1px;
   color: #999;
   background-color: #111;
+}
+@media (min-width: 420px) {
+  nav a {
+    padding: 1em;
+    font-size: 0.875em;
+  }
 }
 nav a.active {
   color: #EEE;
@@ -520,6 +527,11 @@ article {
   padding: 0.5em 1em;
   -webkit-transition: color 0.2s ease-out, background 0.2s ease-out, border 0.2s ease-out;
   transition: color 0.2s ease-out, background 0.2s ease-out, border 0.2s ease-out;
+  color: #888;
+}
+article .content {
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
 }
 .show-announce article {
   display: none;
@@ -534,9 +546,19 @@ article header, article footer {
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
 }
 article .content {
-  font-size: 1.75em;
+  font-size: 1.125em;
   text-align: center;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+@media (min-width: 380px) {
+  article .content {
+    font-size: 1.375em;
+  }
+}
+@media (min-width: 620px) {
+  article .content {
+    font-size: 1.625em;
+  }
 }
 article footer {
   text-align: right;
@@ -546,6 +568,12 @@ article.event-unprocessed {
 }
 article.event-past {
   color: #555;
+}
+article.event-recent header, article.event-recent footer, article.event-call header, article.event-call footer, article.event-soon header, article.event-soon footer {
+  color: #CCC;
+}
+article.event-recent .content, article.event-call .content, article.event-soon .content {
+  color: #FFF;
 }
 article.event-recent {
   border-top-color: #700;
@@ -565,14 +593,10 @@ article.event-call {
   font-size: 2.25em;
 }
 article.event-soon {
-  color: #EEE;
-  border-top-color: #444;
-  background-color: #333;
-  border-bottom-color: #222;
+  border-top-color: #049;
+  background-color: #036;
+  border-bottom-color: #013;
 }
-article.event-upcoming {
-  color: #EEE;
-}
-article.event-future {
-  color: #888;
+article.event-upcoming .content {
+  color: #CCC;
 }
