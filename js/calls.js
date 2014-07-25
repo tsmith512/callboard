@@ -5,13 +5,18 @@ var calls = [
     warnings: [0]
   },
   {
+    event: 'Many a New Day Dance Call',
+    time: '7:00pm',
+    warnings: [5, 0]
+  },
+  {
     event: 'Fight and Fall Rehearsals',
-    time: '7:15pm',
+    time: '7:10pm',
     warnings: [5, 0]
   },
   {
     event: 'Sound Check',
-    time: '8:00pm',
+    time: '7:50pm',
     warnings: []
   },
   {
