@@ -28,8 +28,8 @@ var calls = [
   },
   {
     event: 'Places',
-    time: '8:25pm',
-    warnings: [2]
+    time: '8:23pm',
+    warnings: [0]
   },
   {
     event: 'Go Craig',
