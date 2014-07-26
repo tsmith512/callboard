@@ -12,19 +12,29 @@ var calls = [
     warnings: [5, 0]
   },
   {
-    event: 'Sound Check',
-    time: '8:00pm',
+    event: 'Will & Gertie Meet and Greet (Saturdays)',
+    time: '7:30pm',
     warnings: [10, 0]
   },
   {
-    event: 'Openers to Places',
-    time: '8:23pm',
-    warnings: [15, 5, 0]
+    event: 'Sound Check',
+    time: '7:50pm',
+    warnings: []
+  },
+  {
+    event: 'Top of Show',
+    time: '8:25pm',
+    warnings: [30, 15, 10, 5]
   },
   {
     event: 'Places',
-    time: '8:28pm',
-    warnings: [60, 30, 15, 10, 5, 0]
+    time: '8:25pm',
+    warnings: [2]
+  },
+  {
+    event: 'Go Craig',
+    time: '8:25pm',
+    warnings: [0]
   },
   {
     event: 'Call the Hill',
