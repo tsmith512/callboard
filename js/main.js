@@ -93,7 +93,7 @@
         // Future calls:
         if      (minutesRemaining.minutes > 15)            { newClass = 'event-future';   }
         else if (minutesRemaining.minutes.between(5, 15))  { newClass = 'event-upcoming'; }
-        else if (minutesRemaining.minutes.between(1, 5))   { newClass = 'event-soon';     }
+        else if (minutesRemaining.minutes.between(0, 5))   { newClass = 'event-soon';     }
         else if (minutesRemaining.minutes.between(-1, 0))  { newClass = 'event-call';     }
       } else {
         // Now / Past calls:
