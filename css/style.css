@@ -547,6 +547,8 @@ article header, article footer {
 }
 article .content {
   font-size: 1.25em;
+  font-weight: 700;
+  font-family: "Open Sans Condensed", "Open Sans", Helvetica, Arial, "Nimbus Sans L", sans-serif;
   text-align: center;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 }

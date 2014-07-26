@@ -112,6 +112,9 @@ article {
 
   .content {
     font-size: 1.25em;
+    font-weight: 700;
+    font-family: $condensedbold;
+
     @include respond-to('medium warnings') {
       font-size: 1.5em;
     }
