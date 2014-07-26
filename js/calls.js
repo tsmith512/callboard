@@ -1,3 +1,5 @@
+var show = 'Oklahoma!';
+
 var calls = [
   {
     event: 'Actors to Venue',

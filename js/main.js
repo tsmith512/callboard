@@ -5,7 +5,12 @@
       callMessage = '<header>COUNT</header> <div class="content">EVENT</div> <footer>Call at TIME</footer>',
       scheduleMessage = '<header>TIME (COUNT)</header> <div class="content">EVENT</div>',
       eventContainer = '<article class="event-unprocessed"></article>',
-      countdownContainer = '<span class="countdown"></span>';
+      countdownContainer = '<span class="countdown"></span>',
+      supportsVibrate = "vibrate" in navigator;
+
+  if (typeof show == "string") {
+    document.title = [show, "Calls"].join(' | ');
+  }
 
   // Run through the call list to build out the necessary warning events:
   $.each(calls, function(index, call){
@@ -75,13 +80,21 @@
       // Do we have a call at this exact moment?
       if (minutesRemaining.minutes == 0) { now = true; }
 
+      // If able, vibrate the host device _once_ if this call should should be
+      // announced. Because of countdown.js rounding, the call is highlighted at
+      // and the vibration happens at :30 before which works well with delays backstage.
+      if (supportsVibrate && minutesRemaining.minutes == 0 && typeof $(this).data('alert') == 'undefined') {
+        $(this).data('alert', true);
+        navigator.vibrate([500, 250, 500, 250, 500]);
+      }
+
       // Add classes to the list item based on how long
       if (count.value.future()) {
         // Future calls:
         if      (minutesRemaining.minutes > 15)            { newClass = 'event-future';   }
         else if (minutesRemaining.minutes.between(5, 15))  { newClass = 'event-upcoming'; }
         else if (minutesRemaining.minutes.between(1, 5))   { newClass = 'event-soon';     }
-        else if (minutesRemaining.minutes.between(-1, 1))  { newClass = 'event-call';     }
+        else if (minutesRemaining.minutes.between(-1, 0))  { newClass = 'event-call';     }
       } else {
         // Now / Past calls:
         if      (minutesRemaining.minutes.between(-1, 1))  { newClass = 'event-call';     }
