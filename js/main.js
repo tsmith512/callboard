@@ -7,6 +7,10 @@
       eventContainer = '<article class="event-unprocessed"></article>',
       countdownContainer = '<span class="countdown"></span>';
 
+  if (typeof show == "string") {
+    document.title = [show, "Calls"].join(' | ');
+  }
+
   // Run through the call list to build out the necessary warning events:
   $.each(calls, function(index, call){
     call.mtime = moment(call.time, 'hh:mma');
