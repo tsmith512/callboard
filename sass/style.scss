@@ -53,7 +53,7 @@ nav {
       font-size: 0.875em;
     }
 
-    padding: 0.5em 0.25em;
+    padding: 0.75em 0.25em;
     text-align: center;
     border-top: 1px solid #222;
     border-bottom: 1px solid #000;
@@ -111,12 +111,15 @@ article {
   color: #888;
 
   .content {
-    font-size: 1.125em;
+    font-size: 1.25em;
+    font-weight: 700;
+    font-family: $condensedbold;
+
     @include respond-to('medium warnings') {
-      font-size: 1.375em;
+      font-size: 1.5em;
     }
     @include respond-to('large warnings') {
-      font-size: 1.625em;
+      font-size: 1.75em;
     }
 
     text-align: center;

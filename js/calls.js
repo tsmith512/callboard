@@ -2,6 +2,8 @@
 // to when the page was loaded, for demonstration purposes. For each of these,
 // 'time' should be a value like '7:30pm' instead.
 
+var show = 'Callboard Sample';
+
 var calls = [
   {
     event: 'Page loaded',
