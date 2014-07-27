@@ -13,7 +13,7 @@ var calls = [
   },
   {
     event: 'Will & Gertie Meet and Greet (Saturdays)',
-    time: '7:30pm',
+    time: '6:30pm',
     warnings: [10, 0]
   },
   {
