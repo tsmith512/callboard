@@ -147,15 +147,15 @@ article {
   }
 
   &.event-recent {
-    border-top-color: #700;
-    background-color: #600;
-    border-bottom-color: #500;
+    border-top-color: lighten($red, 5%);
+    background-color: $red;
+    border-bottom-color: darken($red, 5%);
   }
 
   &.event-call {
-    border-top-color: #070;
-    background-color: #060;
-    border-bottom-color: #050;
+    border-top-color: lighten($green, 5%);
+    background-color: $green;
+    border-bottom-color: darken($green, 5%);
     .show-announce & {
       font-size: 1.5em;
       .content { font-size: 2.25em; }
@@ -164,9 +164,9 @@ article {
   }
 
   &.event-soon {
-    border-top-color: #049;
-    background-color: #036;
-    border-bottom-color: #013;
+    border-top-color: lighten($blue, 5%);
+    background-color: $blue;
+    border-bottom-color: darken($blue, 5%);
   }
 
   &.event-upcoming {

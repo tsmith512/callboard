@@ -578,14 +578,14 @@ article.event-recent .content, article.event-call .content, article.event-soon .
   color: #FFF;
 }
 article.event-recent {
-  border-top-color: #700;
-  background-color: #600;
-  border-bottom-color: #500;
+  border-top-color: #8d100d;
+  background-color: #760d0b;
+  border-bottom-color: #5f0a09;
 }
 article.event-call {
-  border-top-color: #070;
-  background-color: #060;
-  border-bottom-color: #050;
+  border-top-color: #00840a;
+  background-color: #006a08;
+  border-bottom-color: #005106;
 }
 .show-announce article.event-call {
   font-size: 1.5em;
@@ -595,9 +595,9 @@ article.event-call {
   font-size: 2.25em;
 }
 article.event-soon {
-  border-top-color: #049;
-  background-color: #036;
-  border-bottom-color: #013;
+  border-top-color: #073b99;
+  background-color: #063281;
+  border-bottom-color: #052969;
 }
 article.event-upcoming .content {
   color: #CCC;
