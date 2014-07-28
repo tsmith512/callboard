@@ -18,8 +18,8 @@ var calls = [
   },
   {
     event: 'Sound Check',
-    time: '7:50pm',
-    warnings: []
+    time: '8:10pm',
+    warnings: [10, 5, 0]
   },
   {
     event: 'Top of Show',
