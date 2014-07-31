@@ -45,5 +45,20 @@ var calls = [
     event: 'Standby Sound; Go Band',
     time: '8:30pm',
     warnings: [0]
+  },
+  {
+    event: 'Dance Call: Ladies for Many a New Day, Traffic',
+    time: '6:50pm',
+    warnings: [5, 0]
+  },
+  {
+    event: 'Dance Call: ALL for Final Farmer/Cowman Sequence, Spacing',
+    time: '7:00pm',
+    warnings: [5, 0]
+  },
+  {
+    event: 'Dance Call: ALL for Bows, Spacing',
+    time: '7:10pm',
+    warnings: [0]
   }
 ];
