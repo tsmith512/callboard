@@ -17,6 +17,9 @@
     call.mtime = moment(call.time, 'hh:mma');
     call.time = call.mtime.toDate();
 
+    // If there aren't any warnings for this event, skip it.
+    if (! "warnings" in call || typeof call.warnings != "object") { return; }
+
     // For each warning in this call ("X minutes until EVENT"), make a new warning event
     $.each(call.warnings, function(index, minutes){
       warnings.push({
