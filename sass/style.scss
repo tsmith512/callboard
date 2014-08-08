@@ -177,3 +177,20 @@ article {
   }
 
 }
+
+#footer {
+  font-size: 0.75em;
+  letter-spacing: 1px;
+  margin-top: 2em;
+  padding: 1em;
+  text-align: center;
+  color: #888;
+  a {
+    color: #CCC;
+    text-decoration: none;
+
+    &:hover {
+      color: #06F;
+    }
+  }
+}
