@@ -512,6 +512,16 @@ nav a.active {
   border-left-color: #888;
 }
 
+.loading {
+  min-height: 10em;
+  background-image: url("../gfx/spinner.gif");
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.loaded .loading {
+  display: none;
+}
+
 .segment {
   display: none;
   margin-bottom: 1em;

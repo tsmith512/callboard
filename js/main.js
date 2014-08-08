@@ -60,6 +60,9 @@
       .appendTo('#schedule');
   });
 
+  // At this point, we've finished all the processing and can hide the spinner
+  $('body').addClass('loaded');
+
   // Add to the Number prototype a few functions to make testing more legible:
     // A function to see if one number is between two others
     Number.prototype.between = function(low,high){ return (this > low && this <= high); }
@@ -123,7 +126,7 @@
   $('nav a').click(function(){
     $('nav a').removeClass('active');
     $(this).addClass('active');
-    $('body').removeClass().addClass( 'show-' + $(this).data('show') );
+    $('body').removeClass('show-calls show-schedule show-announce').addClass( 'show-' + $(this).data('show') );
   });
 
   $(document).ready(function(){
