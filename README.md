@@ -126,7 +126,7 @@ Generate three displays:
   color-coded by how soon they must be given.
 - **Schedule:** A full list of countdowns to the events in `calls.js`.
 
-# Introduction (the accompanying blog post)
+# Project Background _([the blog post](#))_
 
 ## JavaScript goes to the Theatre
 
