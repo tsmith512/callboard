@@ -29,7 +29,7 @@ you need to host this somewhere.
   3. Edit the `calls.js` file in the `js` folder
   4. See your project at `http://YOUR-USER-NAME.github.io/callboard` (for
      example, you can see this project with sample data at
-     `[http://tsmith512.github.io/callboard][DEMO]`).
+     [`http://tsmith512.github.io/callboard`][DEMO]).
 - For security reasons, generally browsers won't run scripts like this locally,
   so you can try downloading it and opening `index.html` in your browser, but
   it probably won't work.
