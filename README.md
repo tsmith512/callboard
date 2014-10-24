@@ -8,19 +8,18 @@ _(Are you a theatrical worker? [Skip to the how-to](#for-theatre-folks).)_
 
 When not building websites for [Four Kitchens][4K], I am a deck manager and
 theatrical electrician. For [Zilker Theatre Production's][ZTP] _Oklahoma!_ in
-2014, I gave many warning calls pre-show and also managed backstage scheduling
-which varied day-to-day as supplementary rehearsals were added or timing changed
-through the life of the production. With a wristwatch, short-term memory, focus,
-and caffeine, this was very manageable. But distractions pop up backstage, and I
-like automating things.
+2014, I managed backstage scheduling and gave warning calls to the rest of
+the company as we worked through the schedule each evening. With a wristwatch, a
+bit of focus, and lots of caffeine, this was very manageable. But distractions
+pop up backstage, and I like automating things.
 
 [Callboard.js][CB] ([demo][DEMO]) is a simple web app that takes an
 easily-editable schedule and produces a list of countdowns for warnings and
-events. At the space, I navigate to this webpage on my phone and check it
-periodically while I handle my other pre-show tasks. When my phone buzzes, it's
-time to get up, make a lap of the space and holler at people (politely).
+events. At the space, I navigated to the site on my phone and checked it
+periodically while I handled my other pre-show tasks. When my phone buzzed, it
+was time to get up, make a lap of the space and holler at people (politely).
 
-To illustrate, I defined these events:
+I defined these events:
 
 - Actors to venue
 - Fight and fall rehearsals
@@ -29,12 +28,12 @@ To illustrate, I defined these events:
 - Top of Show
 - Places
 
-And the warnings that I wanted to give for each: ("Ten minutes to top of show!",
-"Five minutes to the fight rehearsal!", etc.)
+And the warnings that I wanted to give for each:  
+_("Ten minutes to top of show!", "Five minutes to the fight rehearsal!", etc.)_
 
 - _Actors to venue:_ Just an item on the schedule, no warnings.
 - _Fight and fall rehearsals:_ 5 minutes and on-time. (Although really, I ran
-  this as soon as folks were ready.)
+  this as soon as cast members were ready.)
 - _Dance calls:_ 10 minutes, 5 minutes, and on-time.
 - _Sound check:_ 10 minutes and on-time.
 - _Top of Show:_ 30, 15, 10, and 5 minutes (_no_ on-time, since I'd call places
@@ -50,8 +49,8 @@ var calls = [
   {
     event: 'Actors to Venue',
     time: '7:00pm',
+    // No announcement for the venue call. It's not like they'll be early...
     warnings: []
-    // No announcement for the venue call. You know your actors won't be early...
   }
   {
     event: 'Sound Check',
@@ -80,12 +79,12 @@ var calls = [
 
 Callboard takes these data and builds out three displays:
 
-- **Announce:** Show all current warnings for two minutes in large text, useful
-  for an unattended display.
-- **Calls:** A running list of countdowns to all current and future warnings,
-  color-coded by how soon they must be given.
-- **Schedule:** A full list of countdowns to the events in `calls.js`, warnings
-  are not included.
+- **Announce:** Show current warnings for two minutes in large text, useful for
+  an unattended display.
+- **Calls:** A running list of countdowns to current and future _warnings_,
+  color-coded by how soon they must be called. Events are not included.
+- **Schedule:** A full list of countdowns to each _event_. Warnings are not
+  included.
 
 ![Three displays][DISPLAY]
 
@@ -93,10 +92,10 @@ Callboard takes these data and builds out three displays:
 ### Retrospective: was it useful and did it work?
 
 Yeah! This bit of cross-disciplinary nerdiness worked out well. It was useful to
-have a brain backup because preshow hours can be very busy. This helped me make
-sure everyone had the prep time they needed for each item on the schedule so we
-were ready to start on time each evening, and minimize surprises if the schedule
-had to change.
+have a brain backup because preshow hours can be very busy. This helped me to
+make sure everyone had the prep time they needed for each item on the schedule
+so we were ready to start on time each evening, and to minimize surprises if the
+schedule had to change.
 
 ### Future roadmap / current limitations
 
@@ -104,21 +103,24 @@ I'll keep tweaking this as I use it for future shows (or maybe you've got some
 good ideas?). Currently there are a handful of things I'd like to work on:
 
 - **A generator for the `calls.js` file which defines the events and warnings.**
-  - I'm certainly handy with a code editor, but for anyone who isn't, this
-    project is less useful. If I can make building the show file easier, more
-    people might find this tool useful.
+  - For anyone who isn't handy with a code editor, this project is less useful
+    than if the config file were automatically generated.
 - **Offline access**
-  - _Oklahoma!_ was performed at outdoors. In July and August. In Texas.
+  - _Oklahoma!_ was performed outdoors. In July and August. In Texas.
   - ![Words of wisdom, or lack thereof][BRAIN]
-  - So at least cell service was abundant. Unfortunately, indoor theatres are
-    generally bunkers of concrete and steel. This web app doesn't yet work if
-    a network connection is not available. I'd like to change that.
+  - At least the cell service was solid there. Indoor theatres frequently have
+    poor reception or wifi that is used for equipment control instead of
+    internet access.
+  - This web app won't work without a network connection (at least to the
+    hosting environment). I'd like to change that so it can work locally.
 - **Performance tweaks**
-  - Sometimes the tab would hang, or counts would take a few seconds to "catch
-    up", especially right after I woke up the phone. This was particularly an
-    issue when I saved it to my [homescreen as a webapp][HOMESCREEN], a feature
-    I ended up not using frequently because of this bug. I think suspending the
-    update interval when the window loses focus could fix this.
+  - When I saved the webapp to my [homescreen as a webapp][HOMESCREEN], the
+    counts would stall out if I switched to another tab for too long, or turned
+    off the screen. I think suspending the update interval when the window loses
+    focus could fix this.
+  - There's not a loading indicator while the lists are being setup, but there
+    is a noticeable delay between pageload and the appearance of any generated
+    content. I'd to fix both of these issues.
 - **Stopwatch or "Act Two" features**
   - Act two started fifteen minutes after houselights came up following act one.
     I just started a stopwatch on my phone for that and did the math to make
@@ -126,7 +128,8 @@ good ideas?). Currently there are a handful of things I'd like to work on:
     to add that second "mode".
   - A current workaround would be to host two separate copies of this project,
     one setup as described, and the other setup like the [demo][DEMO] where the
-    "events" are all set relative to the time at pageload.
+    "events" are all set relative to the time at pageload and load that when
+    intermision starts.
 - **Midnight is a problem**
   - How I invoked simple time parsing in Moment.js ignores dates, so a call at
     11:30pm happens "tonight," but a call at 12:30am would have already happened
@@ -141,7 +144,7 @@ good ideas?). Currently there are a handful of things I'd like to work on:
 
 --------------------------------------------------------------------------------
 
-# For theatre folks 
+# For theatre folks
 
 ## Project description
 
@@ -184,6 +187,17 @@ three tabs on the top of the screen above the lists:
 - _Schedule:_ A full list of all the events you've defined and countdowns to
   each. This gets the warnings out of your way to see the bigger picture.
 
+## Support
+
+If it isn't working, you probably have a formatting or punctuation problem
+("syntax error") in the `calls.js` file. In a future version, I'm hoping to
+build a generator to build that file visually so you don't have to futz with
+any code.
+
+I cannot promise to support the whole world with this singlehandedly, but if you
+need some assistance, and I am able, reach out to me on [Twitter][TW] or
+[file an issue on this project at GitHub][GHI] (if you have a GitHub account).
+
 ## Known limitations
 
 I built this for [Zilker Theatre Production's][ZTP] _Oklahoma!_ performance, so
@@ -199,22 +213,18 @@ in mind.
     because that's how mobile browsers work. If they kept running stuff
     constantly, your battery would die even faster. ;)
 - The countdowns and timers are based on the time
-  _as it is set on the computer/device you're using:_
-  - Hence my joking that I run my shows on "Verizon Standard Time"
+  _as it is set on the computer/device you're using._
+  - Hence my comment about running shows on "Verizon Standard Time"
   - This also means that there may be differences of a few seconds between
     different devices.
-
-## Support
-
-If it isn't working, you probably have a formatting or punctuation problem
-("syntax error") in the `calls.js` file. In a future version, I'm hoping to
-build a generator to build that file visually so you don't have to futz with
-any code.
-
-I cannot promise to support the whole world with this singlehandedly, but if you
-need some assistance, and I am able, reach out to me on [Twitter][TW] or
-[file an issue on this project at GitHub][GHI] (if you have a GitHub account).
-
+- It will not work offline.
+  - You need to have a connection to the place it is hosted to load the page,
+    but after that, it'll keep running.
+- Midnight is a problem.
+  - Callboard doesn't think about days, just hours. So an 11:30pm event would
+    happen "tonight," but something that is scheduled for an hour later at
+    12:30am would have "already happened this morning," according to the page.
+  - If this affects you before I fix it, just reload the page at midnight.
 
 [IMAGE]: gfx/callboard.jpg
 [4K]: http://www.fourkitchens.com
