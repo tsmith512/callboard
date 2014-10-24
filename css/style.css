@@ -602,3 +602,19 @@ article.event-soon {
 article.event-upcoming .content {
   color: #CCC;
 }
+
+#footer {
+  font-size: 0.75em;
+  letter-spacing: 1px;
+  margin-top: 2em;
+  padding: 1em;
+  text-align: center;
+  color: #888;
+}
+#footer a {
+  color: #CCC;
+  text-decoration: none;
+}
+#footer a:hover {
+  color: #06F;
+}
