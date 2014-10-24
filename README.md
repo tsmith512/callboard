@@ -128,7 +128,7 @@ Generate three displays:
 
 # Project Background _([the blog post](#))_
 
-## JavaScript goes to the Theatre
+## JavaScript goes to the theatre
 
 When not building websites for [Four Kitchens][4K], I am a deck manager and
 theatrical electrician. For [Zilker Theatre Production's][ZTP] _Oklahoma!_ in
@@ -165,12 +165,56 @@ And the warnings that I wanted to give for each: ("Ten minutes to top of show!",
 - _Dance calls:_ 10 minutes, 5 minutes, and on-time.
 - _Sound check:_ 10 minutes and on-time.
 - _Top of Show:_ 30, 15, 10, and 5 minutes (_no_ on-time, since I'd call places
-  at two minutes minutes).
+  at two minutes).
 - _Places:_ On-time for the event, which was defined as two minutes before Top
   of Show.
 
 At the space, I navigate to this webpage on my phone and check it periodically
 while I handle my other pre-show tasks.
+
+### Uh, so did it work?
+
+Yeah! It was nice to have this as a brain backup because the preshow hours can
+easily get filled with maintenance tasks or other things. One of the joys of
+theatre is that every day and the challenges change over time. This helped me
+make sure everyone had the notice they needed to get everything started on time
+each evening and minimize surprises if the schedule had to change.
+
+### Future roadmap / current limitations
+
+I'll keep tweaking this as I use it for future shows (or maybe you've got some
+good ideas?). Currently there are a handful of things I'd like to work on:
+
+- **A generator for the `calls.js` file which defines the events and warnings.**
+  - I'm certainly handy with a code editor, but for anyone who isn't, this
+    project is less useful. If I can make building the show file easier, more
+    people might find this tool useful.
+- **Offline access**
+  - _Oklahoma!_ was performed at outdoors. In July and August. In Texas.
+  - ![Words of wisdom, or lack thereof][BRAIN]
+  - So at least cell service was abundant. Unfortunately, indoor theatres are
+    generally bunkers of concrete and steel. This web app doesn't yet work if
+    a network connection is not available. I'd like to change that.
+- **Performance tweaks**
+  - Sometimes the tab would hang, or counts would take a few seconds to "catch
+    up", especially right after I woke up the phone. This was particularly an
+    issue when I saved it to my [homescreen as a webapp][HOMESCREEN], a feature
+    I ended up not using frequently because of this bug. I think suspending the
+    update interval when the window loses focus could fix this.
+- **Stopwatch or "Act Two" features**
+  - Act two started fifteen minutes after houselights came up following act one.
+    I just started a stopwatch on my phone for that and did the math to make
+    those calls, since there were fewer. It would be nice to have an easy way
+    to add that second "mode".
+  - A current workaround would be to host two separate copies of this project,
+    one setup as described, and the other setup like the [demo][DEMO] where the
+    "events" are all set relative to the time at pageload.
+- **On-the-fly changes**
+  - Not sure what form this would take, but sometimes you just know you're gonna
+    have to hold house. The counts can't be updated from the phone, and there is
+    no "delay" feature, but something like that could be useful... unfortunately.
+  - _(Shoutout to the_ Oklahoma! _crew, in a whole summer, that only happened
+    twice, and they got us back on track very quickly.)_
 
 [IMAGE]: gfx/callboard.jpg
 [4K]: http://www.fourkitchens.com
@@ -182,3 +226,5 @@ while I handle my other pre-show tasks.
 [FORK]: https://help.github.com/articles/fork-a-repo
 [TW]: http://twitter.com/tsmith512
 [GHI]: https://github.com/tsmith512/callboard/issues/new
+[HOMESCREEN]: https://developer.chrome.com/multidevice/android/installtohomescreen
+[BRAIN]: gfx/brainmissing.jpg
