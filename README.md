@@ -127,6 +127,8 @@ handful of things I'd like to work on:
   - There's not a loading indicator while the lists are being set up, but there
     is a noticeable delay between pageload and the appearance of any generated
     content. I'd like to fix both of these issues.
+  - Better templating would make rendering faster and code more legible. At the
+    moment, templates are strings with keywords which get `.replace()`-ed.
 - **Stopwatch or "Act Two" features**
   - Act two started fifteen minutes after houselights came up following act one.
     I just started a stopwatch on my phone for that and did the math to make
