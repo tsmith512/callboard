@@ -92,12 +92,15 @@ Callboard takes these data and builds out three displays:
 
 ### Retrospective: was it useful and did it work?
 
-The goals were to make sure everyone had the prep time they needed for each item
-on the schedule so we were ready to start on time each evening, to minimize
-surprises if the schedule had to change, and make it easy for me to _not_ have
-to think about either. So, yes! This bit of cross-disciplinary nerdiness worked
-out well. It was useful to have a brain backup because pre-show hours can be
-very busy.
+The goals were:
+
+- To make sure everyone had the prep time they needed for each item on the
+  schedule so we were ready to start on time each evening,
+- To minimize surprises if the schedule had to change,
+- And to make it easy for me to _not_ have to think about either.
+
+So, yes! This bit of cross-disciplinary nerdiness worked out well. It was useful
+to have a brain backup because pre-show hours can be very busy.
 
 ### Future roadmap / current limitations
 
